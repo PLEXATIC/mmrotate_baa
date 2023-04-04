@@ -1,11 +1,10 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from .collect_env import collect_env
-from .compat_config import compat_cfg
-from .logger import get_root_logger
-from .misc import find_latest_checkpoint
-from .setup_env import setup_multi_processes
+from .misc import get_test_pipeline_cfg
+from .patch import get_multiscale_patch, merge_results_by_nms, slide_window
+from .setup_env import register_all_modules
 
 __all__ = [
-    'get_root_logger', 'collect_env', 'find_latest_checkpoint', 'compat_cfg',
-    'setup_multi_processes'
+    'collect_env', 'register_all_modules', 'get_test_pipeline_cfg',
+    'get_multiscale_patch', 'merge_results_by_nms', 'slide_window'
 ]
