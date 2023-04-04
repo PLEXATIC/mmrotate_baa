@@ -122,3 +122,6 @@ tmp
 
 # custom
 mmrotate/.mim
+datasets/dota_all
+datasets/dota_all_train_val
+datasets/dota_all_train_val_ir_correct_names

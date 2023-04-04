@@ -1,10 +1,12 @@
-ARG PYTORCH="1.6.0"
-ARG CUDA="10.1"
+ARG PYTORCH="1.10.0"
+ARG CUDA="11.3"
 ARG CUDNN="7"
 
-FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
+#FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
+FROM pytorch/pytorch:1.10.0-cuda11.3-cudnn8-devel
 
-ENV TORCH_CUDA_ARCH_LIST="6.0 6.1 7.0+PTX"
+
+ENV TORCH_CUDA_ARCH_LIST="8.0"
 ENV TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 
@@ -17,7 +19,7 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
     && rm -rf /var/lib/apt/lists/*
 
 # Install MMCV MMDetection
-RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
+RUN pip install mmcv-full==1.7.0 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10/index.html
 RUN pip install mmdet
 # Install MMRotate
 RUN conda clean --all

@@ -29,10 +29,43 @@ class DOTADataset(CustomDataset):
         version (str, optional): Angle representations. Defaults to 'oc'.
         difficulty (bool, optional): The difficulty threshold of GT.
     """
-    CLASSES = ('plane', 'baseball-diamond', 'bridge', 'ground-track-field',
-               'small-vehicle', 'large-vehicle', 'ship', 'tennis-court',
-               'basketball-court', 'storage-tank', 'soccer-ball-field',
-               'roundabout', 'harbor', 'swimming-pool', 'helicopter')
+    CLASSES = (
+        'token_1',
+        'token_2',
+        'token_3',
+        'token_4',
+        'token_5',
+        'token_6',
+        'token_7',
+        'token_8',
+        'token_9',
+        'token_10',
+        'token_11',
+        'token_12',
+        'token_13',
+        'token_14',
+        'token_15',
+        'token_16',
+        'token_17',
+        'token_18',
+        'token_19',
+        'token_20',
+        'token_21',
+        'token_22',
+        'token_23',
+        'token_24',
+        'token_25',
+        'token_26',
+        'token_27',
+        'token_28',
+        'token_29',
+        'token_30',
+        'token_31',
+        'token_32',
+        'token_33',
+        'token_34',
+        'token_35',
+    )
 
     PALETTE = [
         (165, 42, 42),
