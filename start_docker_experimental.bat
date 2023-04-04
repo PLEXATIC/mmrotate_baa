@@ -1,0 +1,1 @@
+docker run --gpus all --shm-size=32g -it -v %cd%:/mmrotate mmrotate_experimental

@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
     && rm -rf /var/lib/apt/lists/*
 
 # Install MMCV MMDetection
-RUN pip install mmcv-full==1.7.0 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10/index.html
-RUN pip install mmdet
+RUN pip install mmcv-full==2.0.0 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10/index.html
+RUN pip install mmdet==3.0.0
 # Install MMRotate
 RUN conda clean --all -y
 RUN git clone https://github.com/open-mmlab/mmrotate.git -b 1.x /mmrotate

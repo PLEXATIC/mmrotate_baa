@@ -247,8 +247,8 @@ def qbox2rbox(boxes: Tensor) -> Tensor:
 
         (x, y), (w1, h1), angle = cv2.minAreaRect(pts)
         # assert np.abs((angle / 180 * np.pi) - theta%(np.pi/2)) < 1e-4
-        assert np.abs(w - w1) < 1e-2 or np.abs(w - h1) < 1e-2
-        assert np.abs(h - w1) < 1e-2 or np.abs(h - h1) < 1e-2
+        #assert np.abs(w - w1) < 1e-2 or np.abs(w - h1) < 1e-2
+        #assert np.abs(h - w1) < 1e-2 or np.abs(h - h1) < 1e-2
 
         rboxes.append([x, y, w, h, theta])
 

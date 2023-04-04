@@ -93,6 +93,8 @@ class RotatedBoxes(BaseBoxes):
                 width_longer, start_angle = True, -90
             elif pattern == 'le135':
                 width_longer, start_angle = True, -45
+            elif pattern == 'r360':
+                width_longer, start_angle = True, -180
             else:
                 raise ValueError("pattern only can be 'oc', 'le90', and"
                                  f"'le135', but get {pattern}.")
