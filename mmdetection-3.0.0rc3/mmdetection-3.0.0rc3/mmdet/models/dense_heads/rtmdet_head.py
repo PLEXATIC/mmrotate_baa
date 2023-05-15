@@ -353,8 +353,7 @@ class RTMDetHead(ATSSHead):
         if batch_gt_instances_ignore is None:
             batch_gt_instances_ignore = [None] * num_imgs
         # anchor_list: list(b * [-1, 4])
-        (all_anchors, all_labels, all_label_weights, all_bbox_targets,
-         all_assign_metrics) = multi_apply(
+        mapply_tuple = multi_apply(
              self._get_targets_single,
              cls_scores.detach(),
              bbox_preds.detach(),
@@ -364,6 +363,11 @@ class RTMDetHead(ATSSHead):
              batch_img_metas,
              batch_gt_instances_ignore,
              unmap_outputs=unmap_outputs)
+        
+        mapply_tuple = tuple(list(mapply_tuple)[:-1])
+        (all_anchors, all_labels, all_label_weights, all_bbox_targets,
+         all_assign_metrics) = mapply_tuple
+        
         # no valid anchors
         if any([labels is None for labels in all_labels]):
             return None

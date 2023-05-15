@@ -305,7 +305,7 @@ class RotatedRTMDetHead(RTMDetHead):
             batch_img_metas,
             batch_gt_instances_ignore=batch_gt_instances_ignore)
         (anchor_list, labels_list, label_weights_list, bbox_targets_list,
-         assign_metrics_list, sampling_results_list) = cls_reg_targets
+         assign_metrics_list) = cls_reg_targets
 
         if self.use_hbbox_loss:
             decoded_bboxes = decoded_hbboxes
