@@ -15,6 +15,8 @@ from ..evaluation import get_classes
 from ..models import build_detector
 from ..structures import DetDataSample, SampleList
 
+import time
+
 
 def init_detector(
     config: Union[str, Path, Config],
@@ -128,6 +130,7 @@ def inference_detector(
             ), 'CPU inference with RoIPool is not supported currently.'
 
     result_list = []
+    time_list = []
     for img in imgs:
         # prepare data
         if isinstance(img, np.ndarray):
@@ -144,14 +147,17 @@ def inference_detector(
 
         # forward the model
         with torch.no_grad():
+            start_time = time.time()
             results = model.test_step(data_)[0]
+            end_time = time.time()
 
+        time_list.append((end_time-start_time)*1000)
         result_list.append(results)
 
     if not is_batch:
-        return result_list[0]
+        return result_list[0], time_list[0]
     else:
-        return result_list
+        return result_list, time_list
 
 
 # TODO: Awaiting refactoring
